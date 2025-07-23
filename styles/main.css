@@ -1,152 +1,220 @@
 body {
-  font-family: "Inter", sans-serif;
-  overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
 body.modal-open {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 #hyperspace-canvas {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background-color: #000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #000;
 }
 
 @keyframes rotate-border {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
+
 @keyframes flow-current-horizontal {
-  from {
-    background-position: -200% 0;
-  }
-  to {
-    background-position: 200% 0;
-  }
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
 }
+
 @keyframes flow-current-vertical {
-  from {
-    background-position: 0 -200%;
-  }
-  to {
-    background-position: 0 200%;
-  }
+    from { background-position: 0 -200%; }
+    to { background-position: 0 200%; }
 }
+
 .cv-card {
-  position: relative;
-  z-index: 1;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  color: white;
-  text-align: left;
-  transition: transform 0.3s ease;
-  overflow: hidden;
-  background: #0D1117;
-}
-.cv-card::before {
-  content: "";
-  position: absolute;
-  z-index: -2;
-  left: -50%;
-  top: -50%;
-  width: 200%;
-  height: 200%;
-  background-color: #0D1117;
-  background-repeat: no-repeat;
-  background-image: conic-gradient(transparent, rgba(68, 255, 255, 0.7), rgba(68, 102, 255, 0.7), transparent 30%);
-  animation: rotate-border 5s linear infinite;
-}
-.cv-card::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 2px;
-  top: 2px;
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
-  background: #0D1117;
-  border-radius: 0.875rem;
-}
-.cv-card.clickable:hover {
-  transform: scale(1.05);
-  cursor: pointer;
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    color: white;
+    text-align: left;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    background: #0D1117;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -2;
+        left: -50%;
+        top: -50%;
+        width: 200%;
+        height: 200%;
+        background-color: #0D1117;
+        background-repeat: no-repeat;
+        background-image: conic-gradient(transparent, rgba(68, 255, 255, 0.7), rgba(68, 102, 255, 0.7), transparent 30%);
+        animation: rotate-border 5s linear infinite;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: 2px;
+        top: 2px;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        background: #0D1117;
+        border-radius: 0.875rem;
+    }
+
+    &.clickable:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
 }
 
 .line {
-  position: absolute;
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .line-h {
-  background-image: linear-gradient(90deg, transparent, #fff, transparent);
-  background-size: 40% 100%;
-  background-repeat: no-repeat;
-  animation: flow-current-horizontal 4s linear infinite;
+    background-image: linear-gradient(90deg, transparent, #fff, transparent);
+    background-size: 40% 100%;
+    background-repeat: no-repeat;
+    animation: flow-current-horizontal 4s linear infinite;
 }
 
 .line-v {
-  background-image: linear-gradient(180deg, transparent, #fff, transparent);
-  background-size: 100% 40%;
-  background-repeat: no-repeat;
-  animation: flow-current-vertical 3s linear infinite;
-  animation-delay: var(--delay, 0s);
+    background-image: linear-gradient(180deg, transparent, #fff, transparent);
+    background-size: 100% 40%;
+    background-repeat: no-repeat;
+    animation: flow-current-vertical 3s linear infinite;
+    animation-delay: var(--delay, 0s);
 }
 
 #organogram-lower {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-  pointer-events: none;
-}
-#organogram-lower.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    pointer-events: none;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
 }
 
 #modal-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-#modal-overlay.visible {
-  opacity: 1;
-  pointer-events: auto;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 #modal-content {
-  max-height: 90vh;
-  overflow-y: auto;
-  transform: scale(0.95);
-  opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #0D1117;
-  border: 1px solid rgba(68, 102, 255, 0.5);
-}
-#modal-content::before, #modal-content::after {
-  display: none;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #0D1117;
+    border: 1px solid rgba(68, 102, 255, 0.5);
+
+    &::before,
+    &::after {
+        display: none;
+    }
 }
 
 #modal-overlay.visible #modal-content {
-  transform: scale(1);
-  opacity: 1;
-}/*# sourceMappingURL=main.css.map */
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* =============================================== */
+/* MUDANÇA: REGRAS DE RESPONSIVIDADE REFORÇADAS */
+/* =============================================== */
+
+/* Mobile-first: O padrão é uma coluna */
+#organogram-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.organogram-col {
+    display: contents;
+}
+
+/* Esconde linhas que não fazem sentido no layout de coluna */
+.line-h, .organogram-col .line-v {
+    display: none;
+}
+
+#organogram-lower .line-v {
+    height: 32px;
+    top: -32px;
+}
+
+/* Desktop: Volta para 3 colunas em telas maiores */
+@media (min-width: 768px) {
+    #organogram-columns {
+        flex-direction: row;
+        align-items: stretch; /* Alinha a altura das colunas */
+    }
+    
+    .organogram-col {
+        display: flex; /* Restaura o display flex para as colunas */
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    /* Mostra as linhas novamente no desktop */
+    .line-h, .organogram-col .line-v {
+        display: block;
+    }
+}
+
+/* Ajuste fino para tablets */
+@media (max-width: 1024px) {
+    #main-card-group {
+        transform: scale(0.9);
+    }
+}
+
+/* Ajuste fino para celulares */
+@media (max-width: 767px) {
+    body {
+        overflow-y: auto; 
+        overflow-x: hidden;
+        display: block;
+        padding: 4rem 1rem;
+    }
+
+    #main-card-group {
+        transform: scale(1);
+    }
+
+    .cv-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}
