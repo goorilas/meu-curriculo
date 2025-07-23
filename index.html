@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weverson Zanelatto - Currículo Interativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Link para o seu arquivo CSS que será gerado pelo Sass -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="flex items-center justify-center h-screen">
+
+    <canvas id="hyperspace-canvas"></canvas>
+
+    <div class="relative flex flex-col items-center" id="main-card-group">
+        <div class="cv-card text-center z-10 w-auto px-12">
+            <h1 class="text-4xl font-black text-white">Weverson Zanelatto</h1>
+            <p class="text-xl text-blue-300 mt-2">Desenvolvedor Python Júnior | Back-End & Análise de Dados</p>
+        </div>
+        <div id="organogram-lower" class="relative mt-8 flex flex-col items-center">
+            <div class="line line-v" style="width: 2px; height: 32px; top: -32px; left: 50%;"></div>
+            <div class="line line-h" style="width: 704px; height: 2px; top: 0; left: 50%; transform: translateX(-50%);"></div>
+            <div class="flex justify-center gap-8 w-full mt-8">
+                <div class="relative flex flex-col items-center gap-8">
+                    <div class="line line-v" style="width: 2px; height: 100%; top: -32px; left: 50%; --delay: 0.5s;"></div>
+                    <div class="cv-card w-80 clickable" data-modal-id="resumo"><h2 class="text-2xl font-bold">Resumo</h2></div>
+                    <div class="cv-card w-80 clickable" data-modal-id="educacao"><h2 class="text-2xl font-bold">Formação</h2></div>
+                </div>
+                <div class="relative flex flex-col items-center gap-8">
+                    <div class="line line-v" style="width: 2px; height: 100%; top: -32px; left: 50%; --delay: 1s;"></div>
+                    <div class="cv-card w-80 clickable" data-modal-id="experiencia"><h2 class="text-2xl font-bold">Experiência</h2></div>
+                    <div class="cv-card w-80 clickable" data-modal-id="habilidades"><h2 class="text-2xl font-bold">Habilidades</h2></div>
+                </div>
+                <div class="relative flex flex-col items-center gap-8">
+                    <div class="line line-v" style="width: 2px; height: 100%; top: -32px; left: 50%; --delay: 1.5s;"></div>
+                    <div class="cv-card w-80 clickable" data-modal-id="projetos"><h2 class="text-2xl font-bold">Projetos</h2></div>
+                    <div class="cv-card w-80 clickable" data-modal-id="contato"><h2 class="text-2xl font-bold">Contato</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-overlay" class="fixed inset-0 flex items-center justify-center z-50">
+        <div id="modal-content" class="w-full max-w-3xl relative p-6 rounded-lg">
+            <button id="modal-close" class="absolute top-4 right-5 text-white text-3xl font-bold">&times;</button>
+            <h2 id="modal-title" class="text-3xl font-bold mb-4 border-b-2 border-blue-400 pb-2 text-white"></h2>
+            <div id="modal-body" class="text-gray-200 mt-4 text-left space-y-4"></div>
+        </div>
+    </div>
+
+    <div class="hidden">
+        <div id="resumo-content">
+            <p class="text-justify">Profissional em transição de carreira para a área de tecnologia, com forte aptidão para o aprendizado rápido e paixão por resolver problemas. Com uma base sólida em desenvolvimento Front-End, estou aprofundando meus conhecimentos em Python e seu ecossistema, utilizando IAs Generativas como o Gemini para acelerar o aprendizado, depurar código e desenvolver soluções criativas em projetos de análise de dados e automação. Sou proativo, colaborativo e busco um ambiente desafiador para iniciar minha jornada como desenvolvedor.</p>
+        </div>
+        <div id="educacao-content">
+            <div><h3 class="text-xl font-bold text-white">Graduação em Análise e Desenvolvimento de Sistemas</h3><p class="text-blue-300">UNIMAR - Universidade de Marília | Conclusão Prevista: 01/2027</p></div>
+            <div><h3 class="text-xl font-bold text-white">Desenvolvedor Full Stack Python</h3><p class="text-blue-300">EBAC - Escola Britânica de Artes Criativas | Módulos de Front-End concluídos, 2024</p></div>
+            <div><h3 class="text-xl font-bold text-white">Introdução ao Machine Learning</h3><p class="text-blue-300">DIO (Digital Innovation One) | Em andamento</p></div>
+            <div><h3 class="text-xl font-bold text-white">Introdução a Python</h3><p class="text-blue-300">Curso em Vídeo | 40 horas, Concluído em 04/2024</p></div>
+        </div>
+        <div id="experiencia-content">
+            <div><h3 class="text-xl font-bold text-white">Desenvolvedor Front-End Voluntário (Vila Velha - ES)</h3><p class="text-blue-300">Junho/2024 - Atual</p><ul class="list-disc list-inside mt-2 space-y-1"><li>Atuo na criação e estilização de uma Landing Page para um serviço de streaming.</li><li>Colaboro com outro desenvolvedor utilizando a ferramenta de gerenciamento de projetos Trello para monitorar o fluxo de trabalho.</li></ul></div>
+        </div>
+        <div id="habilidades-content">
+            <div><h3 class="text-xl font-bold text-white">Back-End & Análise de Dados</h3><p>Python, Pandas, NumPy, RPA (PyAutoGUI, Selenium), SQL (Básico)</p></div>
+            <div><h3 class="text-xl font-bold text-white">Front-End</h3><p>HTML5, CSS3, JavaScript (ES6+), Bootstrap, SASS, LESS</p></div>
+            <div><h3 class="text-xl font-bold text-white">IA e Engenharia de Prompt</h3><p>Interação avançada com LLMs (Gemini, ChatGPT) para otimização de código, análise de dados e ideação de projetos.</p></div>
+            <div><h3 class="text-xl font-bold text-white">Ferramentas e Metodologias</h3><p>Git, GitHub, VS Code, Pycharm, Trello, Figma</p></div>
+        </div>
+        <div id="projetos-content">
+            <div><h3 class="text-xl font-bold text-white">Analisador de Dados Pokémon com Pandas | Julho/2025</h3><p class="mt-1">Desenvolvi um script em Python para realizar uma análise exploratória em um dataset com mais de 800 registros...</p><p class="mt-1 font-semibold text-blue-300">Tecnologias: Python, Pandas</p></div>
+            <div><h3 class="text-xl font-bold text-white">Robô de Automação de Tarefas (RPA) | Julho/2025</h3><p class="mt-1">Criei um robô para automatizar tarefas repetitivas no sistema operacional...</p><p class="mt-1 font-semibold text-blue-300">Tecnologias: Python, PyAutoGUI</p></div>
+            <div><h3 class="text-xl font-bold text-white">Clone da Interface Disney+ | Junho/2024</h3><p class="mt-1">Recriação da interface da plataforma Disney+, focando em fidelidade visual e responsividade.</p><p class="mt-1 font-semibold text-blue-300">Tecnologias: HTML, SASS, JavaScript</p></div>
+        </div>
+        <div id="contato-content">
+            <p><strong>Email:</strong> wdxz_100@hotmail.com</p><p><strong>Telefone:</strong> (27) 98113-2529</p><p><strong>Localização:</strong> Aribiri, Vila Velha/ES</p>
+            <div class="mt-4"><a href="https://www.linkedin.com/in/weverson-david-b85b342b6/" target="_blank" class="text-blue-300 hover:text-blue-200 font-semibold text-lg mr-4">LinkedIn</a><a href="https://github.com/goorilas/" target="_blank" class="text-blue-300 hover:text-blue-200 font-semibold text-lg">GitHub</a></div>
+        </div>
+    </div>
+
+    <!-- Link para o seu arquivo JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
