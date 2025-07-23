@@ -162,10 +162,10 @@ body.modal-open {
 /* Para Celulares */
 @media (max-width: 767px) {
     body {
-        overflow-y: auto; /* Permite rolagem vertical */
-        overflow-x: hidden; /* Impede rolagem horizontal */
+        overflow-y: auto; 
+        overflow-x: hidden;
         display: block;
-        padding: 4rem 1rem; /* Adiciona padding para não colar nas bordas */
+        padding: 4rem 1rem;
     }
 
     #main-card-group {
@@ -175,10 +175,12 @@ body.modal-open {
     #organogram-columns {
         flex-direction: column;
         align-items: center;
-        gap: 2rem; /* Espaçamento entre os cartões na coluna única */
+        gap: 2rem;
     }
 
-    /* Faz com que os cartões se comportem como filhos diretos do container principal */
+    /* Esta é a regra chave: ela remove os containers das colunas do layout,
+       fazendo com que todos os 6 cartões se tornem filhos diretos do container
+       principal, que está configurado para empilhá-los em uma única coluna. */
     .organogram-col {
         display: contents;
     }
