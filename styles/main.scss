@@ -1,7 +1,11 @@
 body {
     font-family: 'Inter', sans-serif;
     overflow: hidden;
-    // Removido o bg-black, pois o canvas já faz isso
+    /* Centralização padrão (desktop) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 body.modal-open {
@@ -148,3 +152,75 @@ body.modal-open {
     transform: scale(1);
     opacity: 1;
 }
+
+/* =============================================== */
+/* REGRAS DE RESPONSIVIDADE */
+/* =============================================== */
+
+/* Mobile-first: O padrão é uma coluna */
+#organogram-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.organogram-col {
+    display: contents;
+}
+
+.line-h, .organogram-col .line-v {
+    display: none;
+}
+
+#organogram-lower .line-v {
+    height: 32px;
+    top: -32px;
+}
+
+/* Desktop: Volta para 3 colunas em telas maiores */
+@media (min-width: 768px) {
+    #organogram-columns {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .organogram-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .line-h, .organogram-col .line-v {
+        display: block;
+    }
+}
+
+/* Ajuste fino para tablets */
+@media (max-width: 1024px) {
+    #main-card-group {
+        transform: scale(0.9);
+    }
+}
+
+/* Ajuste fino para celulares */
+@media (max-width: 767px) {
+    body {
+        /* MUDANÇA: Alinha o conteúdo no topo e adiciona padding */
+        align-items: flex-start;
+        height: auto;
+        overflow-y: auto; 
+        overflow-x: hidden;
+        padding: 6rem 1rem; /* Aumenta o padding do topo */
+    }
+
+    #main-card-group {
+        transform: scale(1);
+    }
+
+    .cv-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+

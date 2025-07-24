@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Link para o seu arquivo CSS que será gerado pelo Sass -->
     <link rel="stylesheet" href="styles/main.css">
 </head>
-<body class="flex items-center justify-center h-screen">
+<!-- MUDANÇA AQUI: Classes de layout removidas do body -->
+<body>
 
     <canvas id="hyperspace-canvas"></canvas>
 
@@ -23,7 +23,6 @@
         <div id="organogram-lower" class="relative mt-8 flex flex-col items-center">
             <div class="line line-v" style="width: 2px; height: 32px; top: -32px; left: 50%;"></div>
             <div class="line line-h" style="width: 704px; height: 2px; top: 0; left: 50%; transform: translateX(-50%);"></div>
-            <!-- MUDANÇA AQUI: Classes de layout removidas -->
             <div id="organogram-columns" class="flex justify-center gap-8 w-full mt-8">
                 <div class="organogram-col relative flex flex-col items-center gap-8">
                     <div class="line line-v" style="width: 2px; height: 100%; top: -32px; left: 50%; --delay: 0.5s;"></div>
